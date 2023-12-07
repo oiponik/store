@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+    <script>
+        function totalamount(){
+            var dailysales = document.getElementById('dailysales').value;
+            var profitratio = document.getElementById('profitratio').value;
+            var charge = document.getElementById('charge').value;
+            var rent = document.getElementById('rent').value;
+            var personnelexpenses = document.getElementById('personnelexpenses').value;
+            var calculate = Math.floor((dailysales*30*profitratio*charge));
+            var total = calculate - rent - personnelexpenses
+            document.getElementById("calculate").innerHTML="예상 정산 금액은 <span class='fw-bold'>"+priceToString(calculate*10000)+"</span> 입니다";
+            document.getElementById("total").innerHTML="예상 순수익은 <span class='fw-bold'>"+priceToString(total*10000)+"</span> 입니다";
+
+        }
+        function priceToString(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        window.onload = function(){
+            totalamount()
+        }
+    </script>
+</head>
+<body>
+    <div class="d-flex align-items-center vh-100">
+        <div class="container">
+            <div class="border shadow p-3 rounded">
+                <h2>매출액 계산기</h2>
+                <h4 class="mt-3">매출</h4>
+                <div class="form-floating">
+                    <select class="form-select" id="dailysales" onchange="totalamount()">
+                        <option value="100">100</option>
+                        <option value="110">110</option>
+                        <option value="120">120</option>
+                        <option value="130">130</option>
+                        <option value="140">140</option>
+                        <option value="150">150</option>
+                        <option value="160">160</option>
+                        <option value="170">170</option>
+                        <option value="180">180</option>
+                        <option value="190">190</option>
+                        <option value="200">200</option>
+                        <option value="210">210</option>
+                        <option value="220">220</option>
+                        <option value="230">230</option>
+                        <option value="240">240</option>
+                        <option value="250">250</option>
+                    </select>
+                    <label for="">일매출(만원단위)</label>
+                </div>
+                <div class="mt-3 form-floating">
+                    <select class="form-select" id="profitratio" onchange="totalamount()">
+                        <option value="0.7">70%</option>
+                        <option value="0.71">71%</option>
+                        <option value="0.72">72%</option>
+                        <option value="0.73">73%</option>
+                        <option value="0.74">74%</option>
+                        <option value="0.75">75%</option>
+                        <option value="0.76">76%</option>
+                        <option value="0.77">77%</option>
+                        <option value="0.78">78%</option>
+                        <option value="0.79">79%</option>
+                        <option value="0.8">80%</option>
+                        <option value="0.81">81%</option>
+                        <option value="0.82">82%</option>
+                        <option value="0.83">83%</option>
+                        <option value="0.84">84%</option>
+                        <option value="0.85">85%</option>
+                    </select>
+                    <label for="">수익비율</label>
+                </div>
+                <div class="mt-3 form-floating">
+                    <select class="form-select" id="charge" onchange="totalamount()">
+                        <option value="0.2">20%</option>
+                        <option value="0.21">21%</option>
+                        <option value="0.22">22%</option>
+                        <option value="0.23">23%</option>
+                        <option value="0.24">24%</option>
+                        <option value="0.25">25%</option>
+                        <option value="0.26">26%</option>
+                        <option value="0.27" selected>27%</option>
+                        <option value="0.28">28%</option>
+                        <option value="0.29">29%</option>
+                        <option value="0.3">30%</option>
+                    </select>
+                    <label for="">수수료</label>
+                </div>
+                <div class="bg-secondary-subtle rounded p-3 mt-3">
+                    <p id="calculate" class="mb-0"></p>
+                </div>
+                <h4 class="mt-3">운영비</h4>
+                <div class="mt-3 form-floating">
+                    <select class="form-select" id="rent" onchange="totalamount()">
+                        <option value="0">0</option>
+                        <option value="200">200</option>
+                    </select>
+                    <label for="">임대료(만원단위)</label>
+                </div>
+                <div class="mt-3 form-floating">
+                    <select class="form-select" id="electricityfee" onchange="totalamount()">
+                        <option value="0">0</option>
+                        <option value="100">100</option>
+                        <option value="110">110</option>
+                        <option value="120">120</option>
+                        <option value="130">130</option>
+                        <option value="140">140</option>
+                        <option value="150">150</option>
+                    </select>
+                    <label for="">전기세(만원단위)</label>
+                </div>
+                <div class="mt-3 form-floating">
+                    <select class="form-select" id="personnelexpenses" onchange="totalamount()">
+                        <option value="0">0</option>
+                        <option value="550">550</option>
+                        <option value="550">695</option>
+                    </select>
+                    <label for="">인건비(만원단위)</label>
+                </div>
+                <div class="bg-secondary-subtle rounded p-3 mt-3">
+                    <p id="total" class="mb-0"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
