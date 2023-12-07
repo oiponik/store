@@ -13,8 +13,10 @@
             var charge = document.getElementById('charge').value;
             var rent = document.getElementById('rent').value;
             var personnelexpenses = document.getElementById('personnelexpenses').value;
+            var electricityfee = document.getElementById('electricityfee').value;
+            
             var calculate = Math.floor((dailysales*30*profitratio*charge));
-            var total = calculate - rent - personnelexpenses
+            var total = calculate - rent - personnelexpenses - electricityfee;
             document.getElementById("calculate").innerHTML="예상 정산 금액은 <span class='fw-bold'>"+priceToString(calculate*10000)+"</span> 입니다";
             document.getElementById("total").innerHTML="예상 순수익은 <span class='fw-bold'>"+priceToString(total*10000)+"</span> 입니다";
 
